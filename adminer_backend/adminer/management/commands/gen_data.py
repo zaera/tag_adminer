@@ -153,18 +153,22 @@ class Command(BaseCommand):
         Competition.objects.create(
                  comp_name='Kupava',
                  comp_type=1,
+                 comp_deata='text description',
              )
         Competition.objects.create(
                  comp_name='Rogaining 2021',
                  comp_type=1,
+                 comp_deata='text description',
              )
         Competition.objects.create(
                  comp_name='MTBO Spring',
                  comp_type=1,
+                 comp_deata='text description',
              )
         Competition.objects.create(
                  comp_name='Sirius 2020',
                  comp_type=1,
+                 comp_deata='text description',
              )
         Competition.objects.create(
             comp_name='Kocherezhki',

@@ -1,0 +1,154 @@
+/* Center the loader */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+
+
+
+
+.btn-space {
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+
+
+
+.bootstrap-tagsinput{
+  display: block;
+  }
+
+
+
+
+
+.dataTables_wrapper .dt-buttons {
+  left:50%;
+  margin-left: -25%;
+}
+
+.bbt {
+  background-color: #8064A2;
+}
+
+
+
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+
+ 
+  .cnt .nav-item {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+.nav-item {
+  
+  text-align:center !important;
+  
+}
+.navbar{
+  z-index: 999990;
+}
+
+.modal{
+  z-index: 999992;
+}
+
+
+
+tbody{
+
+  background-color:white !important;
+
+}
+    
+    .navbar {
+      margin-bottom: 20px;
+    }
+
+    .fmc{
+      text-align: center;
+  display: flex;
+  align-items: center;
+      width: 100px;
+      display:block;
+    margin-left:auto;
+    margin-right:auto;
+    }
+      .fmc2{
+      text-align: center; 
+    }
+
+.table td { text-align: center; vertical-align: middle;}
+.modal-header { background-color: #353A40; color: white; }
+.badges {
+font-size: 1.2em;
+ }
+ hr.dashed {
+    border-top: 2px dashed #999;
+}
+.label-as-badge { border-radius: 1em; }
+
+
+.table .thead-dark th {
+  background-color: #343a40;
+  text-align: center;
+}
+
+.btn-group{
+  text-align: center;
+  display: flex;
+  align-items: center;
+      width: 100px;
+      display:block;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+@media (max-width: 500px) {
+  .dropdown-menu{
+        height:200px;
+        overflow-y:auto;
+     }
+  }
+
+
+@media screen and (max-width:768px) {
+  img {
+      width:100%;
+  }
+}
