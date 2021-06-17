@@ -1,4 +1,34 @@
 from random import randint
+import os
+
+def write_comp_id_to_file():
+    file = 'comp.txt'
+    open(file, 'w').close()
+    f = open(file, 'a')
+    f.write(str(randint(0, 5)))
+    f.close()
+
+
+def read_comp_id_from_file():
+    f = open('comp.txt', 'r')
+    filedata = f.read()
+    f.close()
+    print('Current ID: ' + filedata)
+
+
+def write_update_to_file():
+    file = 'update.txt'
+    open(file, 'w').close()
+    f = open(file, 'a')
+    f.write(str(randint(0, 255)))
+    f.close()
+
+
+def read_update_from_file():
+    f = open('update.txt', 'r')
+    filedata = f.read()
+    f.close()
+    print('Update Code: ' + filedata)
 
 
 def random_wrist_punch():
