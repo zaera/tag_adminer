@@ -1,9 +1,15 @@
 from django.contrib import admin
-from .models import Competition, Group, Runner, Wrist
+from .models import Settings, Competition, Group, Runner, Wrist
 # from rangefilter.filters import DateTimeRangeFilter
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 # Register your models here.
+
+
+class SettingsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'printer_ip', 'printer_autoprint', 'current_comp_id', 'version',)
+    list_filter = ('printer_ip', 'printer_autoprint', 'current_comp_id', 'version',)
+    search_fields = ('printer_ip', 'printer_autoprint', 'current_comp_id', 'version',)
 
 
 class CompetitionResource(resources.ModelResource):
@@ -13,9 +19,9 @@ class CompetitionResource(resources.ModelResource):
 
 
 class CompetitionAdmin(ImportExportModelAdmin):
-    list_display = ('id', 'comp_name', 'comp_type',)
+    list_display = ('id', 'comp_name', 'comp_type', 'comp_data',)
     list_filter = ('comp_name', 'comp_type',)
-    search_fields = ('comp_name', 'comp_type',)
+    search_fields = ('comp_name', 'comp_type', 'comp_data',)
     resource_class = CompetitionResource
 
 
@@ -99,6 +105,7 @@ class WristAdmin(ImportExportModelAdmin):
     resource_class = WristResource
 
 
+admin.site.register(Settings, SettingsAdmin)
 admin.site.register(Competition, CompetitionAdmin)
 admin.site.register(Group, GroupAdmin)
 admin.site.register(Runner, RunnerAdmin)

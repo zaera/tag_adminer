@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from adminer.models import Competition, Group, Runner, Wrist
+from adminer.models import Settings, Competition, Group, Runner, Wrist
 from faker import Faker
 import random
 # from random import randrange
@@ -25,6 +25,10 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         fake = Faker()
+        Settings.objects.create(printer_ip='192.168.11.50',
+                                printer_autoprint=True,
+                                current_comp_id=1,
+                                version=1,)
         for i in range(5):
             Group.objects.create(group_competition_id=i,
                                  group_seq='27-31-32-33-34-30',

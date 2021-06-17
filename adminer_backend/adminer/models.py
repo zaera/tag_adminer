@@ -1,17 +1,24 @@
 from django.db import models
-
 # Create your models here.
+
+
+class Settings(models.Model):
+    printer_ip = models.GenericIPAddressField()
+    printer_autoprint = models.BooleanField()
+    current_comp_id = models.PositiveSmallIntegerField()
+    version = models.PositiveSmallIntegerField()
 
 
 class Competition(models.Model):
     comp_name = models.CharField(max_length=50)
     comp_type = models.PositiveSmallIntegerField()
+    comp_data = models.CharField(max_length=3000)
 
 
 class Group(models.Model):
     group_name = models.CharField(max_length=20)
     group_seq = models.CharField(max_length=200)
-    group_competition_id = models.CharField(max_length=200)
+    group_competition_id = models.PositiveSmallIntegerField()
 
 
 class Runner(models.Model):
@@ -30,7 +37,6 @@ class Wrist(models.Model):
     wrist_serial_number = models.PositiveSmallIntegerField()
     wrist_firmware = models.PositiveSmallIntegerField()
     wrist_voltage = models.PositiveSmallIntegerField()
-    # ----------------------------------------------------------------------
     wrist_cp0 = models.PositiveIntegerField()
     wrist_cp1 = models.PositiveIntegerField()
     wrist_cp2 = models.PositiveIntegerField()
@@ -286,7 +292,6 @@ class Wrist(models.Model):
     wrist_cp252 = models.PositiveIntegerField()
     wrist_cp253 = models.PositiveIntegerField()
     wrist_cp254 = models.PositiveIntegerField()
-    # ----------------------------------------------------------------------
     wrist_passed = models.BooleanField()
     wrist_time = models.PositiveIntegerField()
     wrist_points = models.PositiveSmallIntegerField()
