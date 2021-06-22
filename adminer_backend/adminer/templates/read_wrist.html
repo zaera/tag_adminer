@@ -1,0 +1,52 @@
+{% load widget_tweaks %}
+
+<div class="modal-header">
+  <h3 class="modal-title">Wrist details</h3>
+<button type="button" onclick="$('#modal').modal('hide')" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="">
+    Competition ID:
+    {{ wrist.wrist_competition_id }}
+  </div>
+  <div class="">
+    Serial Number:
+    {{ wrist.wrist_sn }}
+  </div>
+  <div class="">
+    Firmware:
+    {{ wrist.wrist_firmware }}
+  </div>
+  <div class="">
+    Voltage:
+    {{ wrist.wrist_voltage }}
+  </div>
+  <div class="">
+    Passed:
+    {{ wrist.wrist_passed }}
+  </div>
+  <div class="">
+    Total time:
+    {{ wrist.wrist_total_time }}
+  </div>
+  <div class="">
+    Points:
+    {{ wrist.wrist_points }}
+  </div>
+  <div class="">
+    Sequence:
+    {{ wrist.wrist_seq }}
+  </div>
+      <div class="">
+    Punches:
+    {{ wrist.wrist_punches }}
+  </div>
+
+</div>
+
+<div class="modal-footer">
+    <button onclick="$('#modal').modal('hide')" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>

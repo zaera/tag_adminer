@@ -5,6 +5,8 @@ from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 # Register your models here.
 
+# python manage.py gen_data
+
 
 class SettingsAdmin(admin.ModelAdmin):
     list_display = ('id', 'printer_ip', 'printer_autoprint', 'current_comp_id', 'version',)
@@ -82,26 +84,28 @@ class WristResource(resources.ModelResource):
 class WristAdmin(ImportExportModelAdmin):
     list_display = ('id',
                     'wrist_competition_id',
-                    'wrist_serial_number',
+                    'wrist_sn',
                     'wrist_firmware',
                     'wrist_voltage',
                     'wrist_passed',
-                    'wrist_time',
-                    'wrist_points',)
+                    'wrist_total_time',
+                    'wrist_points',
+                    'wrist_seq',
+                    'wrist_punches',)
     list_filter = ('wrist_competition_id',
-                   'wrist_serial_number',
                    'wrist_firmware',
                    'wrist_voltage',
                    'wrist_passed',
-                   'wrist_time',
-                   'wrist_points',)
+                   )
     search_fields = ('wrist_competition_id',
-                     'wrist_serial_number',
+                     'wrist_sn',
                      'wrist_firmware',
                      'wrist_voltage',
                      'wrist_passed',
-                     'wrist_time',
-                     'wrist_points',)
+                     'wrist_total_time',
+                     'wrist_points',
+                     'wrist_seq',
+                     'wrist_punches',)
     resource_class = WristResource
 
 

@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'rangefilter',
     'import_export',
     'crispy_forms',
+    'widget_tweaks',
 
     'adminer',
 ]
