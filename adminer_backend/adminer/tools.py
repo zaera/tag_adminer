@@ -72,3 +72,8 @@ def random_wrist_punch():
         ss = str(ss)
     data = str(cp) + str(hh) + str(mm) + str(ss)
     return(int(data))
+
+
+def convert_time(seconds):
+    import time
+    return(time.strftime('%H:%M:%S', time.gmtime(seconds)))

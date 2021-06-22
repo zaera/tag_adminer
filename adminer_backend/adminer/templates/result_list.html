@@ -2,31 +2,33 @@
 {% block body_content %}
 {% load poll_extras %}
 {% load static %}
-    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <!--     <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'js/jquery.bootstrap.modal.forms.js' %}"></script>
+    -->
     <!-- You can alternatively load the minified version -->
     <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
-    Competition: {{ competition }}
-    <table id="results_table" class="table">
+    <table id="results_table" class="table table-hover ">
 				<thead>
 					<tr>
 						<th class="text-center" scope="col">SN</th>
 						<th class="text-center" scope="col">Runner</th>
+                        <th class="text-center" scope="col">Time</th>
 						<th class="text-center" scope="col">Group</th>
 						<th class="text-center" scope="col">Voltage</th>
                         <th class="text-center" scope="col">Passed</th>
-                        <th class="text-center" scope="col"></th>
+                        <th class="text-center" scope="col">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
                         {% for item in data %}
                             <tr>
-                                <td class="text-center" scope="row">{{ item.1 }}</td>
-                                <td class="text-center" scope="row">{{ item.2 }}</td>
-                                <td class="text-center" scope="row">{{ item.3 }}</td>
+                                <td class="text-center" scope="row"><span class="badge badge-pill badge-dark">{{ item.1 }}</span></td>
+                                <td class="text-center" scope="row"><span class="update-runner fake-link" data-form-url="{% url 'adminer:update-runner' pk=item.2 %}"><a class="name">{{ item.3 }}</a></span></td>
                                 <td class="text-center" scope="row">{{ item.4 }}</td>
-                                <td class="text-center" scope="row"><a class="{{ item.5 }}"></a></td>
+                                <td class="text-center" scope="row"><span class="update-group fake-link" data-form-url="{% url 'adminer:update-group' pk=item.5 %}">{{ item.6 }}</span></td>
+                                <td class="text-center" scope="row">{{ item.7 |safe }}</td>
+                                <td class="text-center" scope="row"><a class="{{ item.8 }}"></a></td>
                                 <td class="text-center" scope="row">
                                      <!-- Read buttons -->
                                     <button type="button" class="read-wrist btn btn-sm btn-primary" data-form-url="{% url 'adminer:read-wrist' pk=item.0 %}"><span class="fa fa-eye"></span></button>
@@ -39,9 +41,6 @@
                         {% endfor%}
 				</tbody>
 			</table>
-
-
-
 <div class="modal fade" tabindex="-1" role="dialog" id="modal">
   <div class="modal-dialog" role="document">
     <div class="modal-content"></div>
@@ -49,6 +48,12 @@
 </div>
     <script type="text/javascript">
 $(document).ready(function() {
+    $(".update-runner").each(function () {
+        $(this).modalForm({formURL: $(this).data("form-url")});
+    });
+    $(".update-group").each(function () {
+        $(this).modalForm({formURL: $(this).data("form-url")});
+    });
     $(".read-wrist").each(function () {
         $(this).modalForm({formURL: $(this).data("form-url")});
     });
@@ -58,13 +63,21 @@ $(document).ready(function() {
     $(".delete-wrist").each(function () {
         $(this).modalForm({formURL: $(this).data("form-url"), isDeleteForm: true});
     });
-
     $( ".modal" ).on('shown.bs.modal', function(){
         try {
     document.getElementById("id_wrist_passed").classList.remove("form-control");
     } catch (error) {}
     });
+    $('.name').each(function(i, el) {
+      if($(el).html() != "" ) {
+          $(el).html($(el).html().replace(" ", "<br>"));
+      }
 });
+});
+function scroll() {
+    window.scrollBy(0,3);
+    scrolldelay = setTimeout(scroll,50);
+}
 </script>
 
 {% endblock body_content %}
