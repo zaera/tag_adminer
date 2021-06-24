@@ -19,12 +19,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <style>
 body {
-	color: #566787;
-	background: #f5f5f5;
     font-size: 1.4em;
     width: 100%;
     min-height: 100vh;
-    display: -webkit-box;
+    /*display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
     display: -ms-flexbox;
@@ -32,13 +30,10 @@ body {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    */
 }
 .table{
     font-size: 0.9em;
-}
-.name{
-    font-size: 0.8em;
-    font-weight: bold;
 }
 .True:before {
     font-family: FontAwesome;
@@ -46,7 +41,7 @@ body {
     display: inline-block;
     padding-right: 3px;
     vertical-align: middle;
-    color: #32CD32;
+    color: greenyellow;
 }
 .False:before {
     font-family: FontAwesome;
@@ -54,38 +49,124 @@ body {
     display: inline-block;
     padding-right: 3px;
     vertical-align: middle;
-    color: #DC143C;
+    color: orangered;
 }
 .fake-link {
     color: darkblue;
     cursor: pointer;
 }
+.fa{
+     font-size: 0.9em;
+}
+.fa-battery-full{
+    color: limegreen;
+}
+.fa-battery-half{
+    color: orange;
+}
+.fa-battery-quarter{
+    color: lightcoral;
+}
+.fa-battery-empty{
+    color: red;
+}
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(73, 122, 255, .8);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 12px;
+    top: 10px;
+    font-size: 30px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#return-to-top:hover {
+    background: rgb(73, 122, 255);
+}
+
+.name{
+    font-size: 0.9em;
+    font-weight: bold;
+}
+.modal label{
+    font-size: 0.9em;
+}
+.modal input{
+    font-size: 0.9em;
+}
+.modal-title{
+    font-size: 0.9em;
+}
+.table > tbody > tr > td {
+     vertical-align: middle;
+}
+a{
+        font-size: 0.8em;
+}
 </style>
  <!--<link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">-->
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+<nav class="navbar fixed-top navbar-expand-lg navbar navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Adminer</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Link</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </div>
 </nav>
+<p>
+<br>
+
       {% block body_content %}
       {% endblock body_content %}
    </body>

@@ -118,16 +118,16 @@ def result_list(request):
             sn = '0' + str(sn)
         voltage = i.wrist_voltage
         if 75 < voltage:
-            voltage = str(voltage) + '% <i class="fa fa-battery-full" aria-hidden="true"></i>'
+            voltage = '<i class="fa fa-battery-full" aria-hidden="true"></i>'
         elif 60 < voltage < 76:
-            voltage = str(voltage) + '% <i class="fa fa-battery-three-quarters" aria-hidden="true"></i>'
+            voltage = '<i class="fa fa-battery-three-quarters" aria-hidden="true"></i>'
         elif 40 < voltage < 61:
-            voltage = str(voltage) + '% <i class="fa fa-battery-half" aria-hidden="true"></i>'
+            voltage = '<i class="fa fa-battery-half" aria-hidden="true"></i>'
         elif 15 < voltage < 41:
-            voltage = str(voltage) + '% <i class="fa fa-battery-quarter" aria-hidden="true"></i>'
+            voltage = '<i class="fa fa-battery-quarter" aria-hidden="true"></i>'
         elif 0 < voltage < 16:
-            voltage = str(voltage) + '% <i class="fa fa-battery-empty" aria-hidden="true"></i>'
-        data.append(tuple((i.id, sn, runner_id, runner_name, convert_time(i.wrist_total_time), group_id, group_name, voltage, i.wrist_passed)))
+            voltage = '<i class="fa fa-battery-empty" aria-hidden="true"></i>'
+        data.append(tuple((i.id, sn, runner_id, runner_name.replace(" ", "<br>"), convert_time(i.wrist_total_time), group_id, group_name, voltage, i.wrist_passed)))
     context = {
         'data': data,
         'competition': competition[0].comp_name,
