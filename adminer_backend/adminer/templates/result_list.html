@@ -10,12 +10,13 @@
     <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
 <div class="row justify-content-center">
     <div class="col-auto">
-    <table id="results_table" class="table table-hover table-responsive">
+    <table id="results_table" class="shadow-lg p-3 mb-5 bg-white rounded table table-striped table-hover table-responsive">
 				<thead>
 					<tr>
 						<th class="text-center" scope="col">SN</th>
 						<th class="text-center" scope="col">Runner</th>
                         <th class="text-center" scope="col">Time</th>
+                        <th class="text-center" scope="col">Points</th>
 						<th class="text-center" scope="col">Group</th>
 						<th class="text-center" scope="col">Voltage</th>
                         <th class="text-center" scope="col">Actions</th>
@@ -27,16 +28,30 @@
                                 <td class="text-center" scope="row"><span class="badge badge-pill badge-dark {{ item.8 }}">{{ item.1 }}</span></td>
                                 <td class="text-center" scope="row"><span class="update-runner name fake-link" data-form-url="{% url 'adminer:update-runner' pk=item.2 %}">{{ item.3 |safe }}</span></td>
                                 <td class="text-center" scope="row">{{ item.4 }}</td>
+                                <td class="text-center" scope="row">{{ item.9 }}</td>
                                 <td class="text-center" scope="row"><span class="update-group fake-link" data-form-url="{% url 'adminer:update-group' pk=item.5 %}">{{ item.6 }}</span></td>
                                 <td class="text-center" scope="row">{{ item.7 |safe }}</td>
                                 <td class="text-center" scope="row">
-                                     <!-- Read buttons -->
+                                     <!-- Read button -->
                                     <button type="button" class="read-wrist btn btn-sm btn-primary" data-form-url="{% url 'adminer:read-wrist' pk=item.0 %}"><span class="fa fa-eye"></span></button>
-                                    <!-- Update buttons -->
-                                    <button type="button" class="update-wrist btn btn-sm btn-primary" data-form-url="{% url 'adminer:update-wrist' pk=item.0 %}"><span class="fa fa-pencil"></span></button>
-                                     <!-- Delete buttons -->
+                                    <!-- Update button -->
+                                    <button type="button" class="update-wrist btn btn-sm btn-warning" data-form-url="{% url 'adminer:update-wrist' pk=item.0 %}"><span class="fa fa-pencil"></span></button>
+                                     <!-- Delete button -->
                                     <button type="button" class="delete-wrist btn btn-sm btn-danger" data-form-url="{% url 'adminer:delete-wrist' pk=item.0 %}"><span class="fa fa-trash"></span></button>
                                 </td>
+                            </tr>
+                            <tr>
+                            <td  colspan="7">
+                            <div class="inline">
+                            <!-- Print button -->
+                            <button type="button" class="btn btn-sm btn-outline-dark"><i class="fa fa-print"></i></button>
+                            <span id="splits">
+                                {% for cp in item.10 %}
+                                {{ cp|safe  }}
+                                {% endfor%}
+                            </span>
+                            </div>
+                            </td>
                             </tr>
                         {% endfor%}
 				</tbody>
@@ -77,6 +92,7 @@ $(document).ready(function() {
     $('label[for=id_wrist_competition_id], input#id_wrist_competition_id').hide();
     $('label[for=id_wrist_firmware], input#id_wrist_firmware').hide();
     $('label[for=id_wrist_voltage], input#id_wrist_voltage').hide();
+    $('label[for=id_wrist_sn], input#id_wrist_sn').hide();
     } catch (error) {}
     try {
     $('label[for=id_runner_competition_id], input#id_runner_competition_id').hide();

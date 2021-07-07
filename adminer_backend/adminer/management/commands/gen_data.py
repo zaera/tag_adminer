@@ -197,9 +197,9 @@ class Command(BaseCommand):
                                     wrist_sn=j,
                                     wrist_firmware=57,
                                     wrist_voltage=randint(30, 60),
-                                    wrist_passed=bool(random.getrandbits(1)),
-                                    wrist_total_time=9595,
-                                    wrist_points=0,
+                                    # wrist_passed=bool(random.getrandbits(1)),
+                                    # wrist_total_time=9595,
+                                    # wrist_points=0,
                                     wrist_seq=generate_rand_seq(randint(3, 5)),
                                     wrist_punches=generate_rand_punch(randint(3, 5)),
                                     )

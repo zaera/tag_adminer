@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cba40764-bd07-462d-99de-e43908cb3af6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/adminer_backend/adminer/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/adminer_backend/adminer/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adminer_backend/adminer/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/adminer_backend/adminer/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adminer_backend/adminer/management/commands/gen_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/adminer_backend/adminer/management/commands/gen_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adminer_backend/adminer/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/adminer_backend/adminer/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adminer_backend/adminer/templates/read_wrist.html" beforeDir="false" afterPath="$PROJECT_DIR$/adminer_backend/adminer/templates/read_wrist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adminer_backend/adminer/templates/result_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/adminer_backend/adminer/templates/result_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adminer_backend/adminer/templates/template.html" beforeDir="false" afterPath="$PROJECT_DIR$/adminer_backend/adminer/templates/template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adminer_backend/adminer/templates/update_wrist.html" beforeDir="false" afterPath="$PROJECT_DIR$/adminer_backend/adminer/templates/update_wrist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adminer_backend/adminer/tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/adminer_backend/adminer/tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adminer_backend/adminer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/adminer_backend/adminer/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adminer_backend/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/adminer_backend/requirements.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1uPyzuwIMPZRBgXwC1kEUpZQyuc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cba40764-bd07-462d-99de-e43908cb3af6" name="Default Changelist" comment="" />
+      <created>1624581787369</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1624581787369</updated>
+      <workItem from="1624581826442" duration="72000" />
+      <workItem from="1625643944508" duration="57000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -10,9 +10,9 @@ class WristEditForm(BSModalModelForm):
             'wrist_sn',
             'wrist_firmware',
             'wrist_voltage',
-            'wrist_passed',
-            'wrist_total_time',
-            'wrist_points',
+            # 'wrist_passed',
+            # 'wrist_total_time',
+            # 'wrist_points',
             'wrist_seq',
             'wrist_punches',
                 ]

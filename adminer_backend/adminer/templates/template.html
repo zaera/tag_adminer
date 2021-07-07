@@ -31,6 +31,8 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     */
+background: rgb(210,209,228);
+background: linear-gradient(90deg, rgba(210,209,228,1) 0%, rgba(255,255,255,1) 50%, rgba(251,238,226,1) 100%);
 }
 .table{
     font-size: 0.9em;
@@ -105,7 +107,6 @@ body {
 #return-to-top:hover {
     background: rgb(73, 122, 255);
 }
-
 .name{
     font-size: 0.9em;
     font-weight: bold;
@@ -120,10 +121,52 @@ body {
     font-size: 0.9em;
 }
 .table > tbody > tr > td {
-     vertical-align: middle;
+    vertical-align: middle;
 }
 a{
-        font-size: 0.8em;
+    font-size: 0.8em;
+}
+.inline {
+    float:left;
+    word-wrap: break-word; /* Перенос слов */
+    width: 50vw;
+}
+.btn{
+    white-space: wrap;
+    float:left;
+    margin: 2 3px;
+}
+.approved{
+    font-size: 0.8em;
+    color: white;
+    font-weight:bold;
+    background:yellowgreen;
+    border-radius:50%;
+    height: 22px;
+    max-width: 28px;
+    min-width: 22px;
+    line-height: 22px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 0px;
+}
+.skipped{
+    font-size: 0.8em;
+    color: white;
+    font-weight:bold;
+    background: coral;
+    border-radius:50%;
+    height: 22px;
+    max-width: 28px;
+    min-width: 22px;
+    line-height: 22px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 0px;
+}
+#splits {
+color: #FFFFFF;
+text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
 }
 </style>
  <!--<link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">-->

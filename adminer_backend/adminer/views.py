@@ -109,6 +109,7 @@ def result_list(request):
                     if group_.id == runner.runner_group_id:
                         group_name = group_.group_name
                         group_id = group_.id
+                        group_seq = group_.group_seq
         sn = i.wrist_sn
         if sn < 10:
             sn = '000' + str(sn)
@@ -127,7 +128,19 @@ def result_list(request):
             voltage = '<i class="fa fa-battery-quarter" aria-hidden="true"></i>'
         elif 0 < voltage < 16:
             voltage = '<i class="fa fa-battery-empty" aria-hidden="true"></i>'
-        data.append(tuple((i.id, sn, runner_id, runner_name.replace(" ", "<br>"), convert_time(i.wrist_total_time), group_id, group_name, voltage, i.wrist_passed)))
+        #data.append(tuple((i.id, sn, runner_id, runner_name.replace(" ", "<br>"), convert_time(i.wrist_total_time), group_id, group_name, voltage, i.wrist_passed)))
+        result = calculate_classic(i.wrist_seq, i.wrist_punches, group_seq, 2)
+
+        #print (result)
+        res=result[0]
+        result_passed = res[0]
+        result_total_time = res[1]
+        result_points = res[2]
+        judge_seq = res[3]
+        #print(res)
+        del result[0]
+        #print(result)
+        data.append(tuple((i.id, sn, runner_id, runner_name.replace(" ", "<br>"), convert_time(result_total_time), group_id, group_name, voltage, result_passed, result_points, judge_seq, result)))
     context = {
         'data': data,
         'competition': competition[0].comp_name,
