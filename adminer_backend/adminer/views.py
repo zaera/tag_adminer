@@ -1,3 +1,5 @@
+from random import randrange
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from adminer.models import Settings, Competition, Group, Runner, Wrist
@@ -8,11 +10,13 @@ from adminer.tools import *
 from django.http import JsonResponse
 from .forms import WristEditForm, GroupEditForm, RunnerEditForm
 from bootstrap_modal_forms.generic import BSModalUpdateView, BSModalDeleteView, BSModalReadView
+from django.core.files.storage import default_storage
 # from random import randint
 # queryset_runner = Runner.objects.filter(runner_competition_id=competition_id)
 # for i in queryset_runner:
 #     i.runner_group_id = randint(41, 80)
 #     i.save()
+import os
 
 
 def handler404(request, exception, template_name="index.html"):
@@ -90,6 +94,13 @@ class WristDeleteView(BSModalDeleteView):
 
 
 def result_list(request):
+    text = randrange(10)
+    # file = os.path.join(settings.BASE_DIR, 'static', 'competition.txt')
+    # breakpoint()
+    f = open(os.path.join(settings.BASE_DIR, 'static/competition.txt'), 'w')
+    f.write(str(text))
+    f.close()
+
     competition_id = read_comp_id_from_file()
     competition = Competition.objects.filter(id=competition_id)
     queryset_wrist = Wrist.objects.filter(wrist_competition_id=competition_id)

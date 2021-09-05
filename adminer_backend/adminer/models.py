@@ -33,6 +33,7 @@ class Runner(models.Model):
 
 
 class Wrist(models.Model):
+    # group = models.ManyToManyField(Group)
     wrist_competition_id = models.PositiveSmallIntegerField()
     wrist_sn = models.PositiveSmallIntegerField()
     wrist_firmware = models.PositiveSmallIntegerField()
