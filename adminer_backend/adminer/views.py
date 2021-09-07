@@ -104,15 +104,23 @@ def result_list_(request):
 
     data = []
 
-    # groups = Group.objects.all().filter(competition__id=1)
     groups = Group.objects.all().select_related('competition').filter(competition__id=1)
-    #groups = Group.objects.all().filter(competition__id=1)
+    wrists =Wrist.objects.select_related('competition').filter(competition__id=1)
+
     for group in groups:
         if 1 == 1:
             # print(group.runner_set.all()[0])
-            runners = Runner.objects.select_related('group').filter(group__id=group.id)
-            for runner in runners:
+            #runners = Runner.objects.select_related('group').filter(group__id=group.id)
+            q_runners = Runner.objects.select_related('group', 'competition').filter(competition__id=1, group__id=group.id)
+            for runner in q_runners:
+               # print(Wrist.objects..select_related('competition').filter(wrist_sn=runner.runner_sn))
                # print(runner.pk)
+                se=0
+
+                for wrist in wrists:
+                   if wrist.wrist_sn == runner.runner_sn:
+                       se = wrist.wrist_seq
+
                 data.append(list((
                     runner.pk,
                     runner.runner_sn,
@@ -123,7 +131,8 @@ def result_list_(request):
                     runner.runner_state,
                     group.pk,
                     group.group_name,
-
+                    se
+                    #Wrist.objects.select_related('competition').filter(competition__id=1, wrist_sn=runner.runner_sn)[0].wrist_seq
                 )))
 
                 # runner_sn = models.PositiveIntegerField()

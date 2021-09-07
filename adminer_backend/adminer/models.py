@@ -23,6 +23,7 @@ class Group(models.Model):
 
 
 class Runner(models.Model):
+    competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
     runner_sn = models.PositiveIntegerField()
     #runner_competition_id = models.PositiveSmallIntegerField()
     #runner_group_id = models.PositiveIntegerField()
