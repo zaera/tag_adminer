@@ -97,7 +97,7 @@ def result_list(request):
     text = randrange(10)
     # file = os.path.join(settings.BASE_DIR, 'static', 'competition.txt')
     # breakpoint()
-    f = open(os.path.join(settings.BASE_DIR, 'static/competition.txt'), 'w')
+    f = open(os.path.join(settings.BASE_DIR, 'adminer/static/competition.txt'), 'w')
     f.write(str(text))
     f.close()
 
