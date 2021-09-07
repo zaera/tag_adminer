@@ -21,7 +21,7 @@ migrate:
 	$(manage_py) migrate
 
 generate_data:
-	$(manage_py) generate_data
+	$(manage_py) gen_run
 
 parse:
 	$(manage_py) parse_pb

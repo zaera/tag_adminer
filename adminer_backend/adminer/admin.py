@@ -3,6 +3,8 @@ from .models import Settings, Competition, Group, Runner, Wrist
 # from rangefilter.filters import DateTimeRangeFilter
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
+
+
 # Register your models here.
 
 # python manage.py gen_data
@@ -15,7 +17,6 @@ class SettingsAdmin(admin.ModelAdmin):
 
 
 class CompetitionResource(resources.ModelResource):
-
     class Meta:
         model = Competition
 
@@ -28,20 +29,18 @@ class CompetitionAdmin(ImportExportModelAdmin):
 
 
 class GroupResource(resources.ModelResource):
-
     class Meta:
         model = Group
 
 
 class GroupAdmin(ImportExportModelAdmin):
-    list_display = ('id', 'group_name', 'group_seq', 'group_competition_id',)
-    list_filter = ('group_name', 'group_seq', 'group_competition_id',)
-    search_fields = ('group_name', 'group_seq', 'group_competition_id',)
+    list_display = ('id', 'group_name', 'group_seq', 'competition',)
+    list_filter = ('group_name', 'group_seq', 'competition',)
+    search_fields = ('group_name', 'group_seq', 'competition',)
     resource_class = GroupResource
 
 
 class RunnerResource(resources.ModelResource):
-
     class Meta:
         model = Runner
 
@@ -49,24 +48,18 @@ class RunnerResource(resources.ModelResource):
 class RunnerAdmin(ImportExportModelAdmin):
     list_display = ('id',
                     'runner_sn',
-                    'runner_competition_id',
-                    'runner_group_id',
                     'runner_name',
                     'runner_club',
                     'runner_coach',
                     'runner_skill',
                     'runner_state',)
     list_filter = ('runner_sn',
-                   'runner_competition_id',
-                   'runner_group_id',
                    'runner_name',
                    'runner_club',
                    'runner_coach',
                    'runner_skill',
                    'runner_state',)
     search_fields = ('runner_sn',
-                     'runner_competition_id',
-                     'runner_group_id',
                      'runner_name',
                      'runner_club',
                      'runner_coach',
@@ -76,14 +69,12 @@ class RunnerAdmin(ImportExportModelAdmin):
 
 
 class WristResource(resources.ModelResource):
-
     class Meta:
         model = Wrist
 
 
 class WristAdmin(ImportExportModelAdmin):
     list_display = ('id',
-                    'wrist_competition_id',
                     'wrist_sn',
                     'wrist_firmware',
                     'wrist_voltage',
@@ -92,20 +83,19 @@ class WristAdmin(ImportExportModelAdmin):
                     # 'wrist_points',
                     'wrist_seq',
                     'wrist_punches',)
-    list_filter = ('wrist_competition_id',
-                   'wrist_firmware',
+    list_filter = ('wrist_firmware',
                    'wrist_voltage',
                    # 'wrist_passed',
                    )
-    search_fields = ('wrist_competition_id',
-                     'wrist_sn',
-                     'wrist_firmware',
-                     'wrist_voltage',
-                     'wrist_passed',
-                     'wrist_total_time',
-                     'wrist_points',
-                     'wrist_seq',
-                     'wrist_punches',)
+    search_fields = (
+        'wrist_sn',
+        'wrist_firmware',
+        'wrist_voltage',
+        'wrist_passed',
+        'wrist_total_time',
+        'wrist_points',
+        'wrist_seq',
+        'wrist_punches',)
     resource_class = WristResource
 
 

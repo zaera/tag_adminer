@@ -6,7 +6,7 @@ class WristEditForm(BSModalModelForm):
     class Meta:
         model = Wrist
         fields = [
-            'wrist_competition_id',
+            # 'wrist_competition_id',
             'wrist_sn',
             'wrist_firmware',
             'wrist_voltage',
@@ -22,7 +22,7 @@ class GroupEditForm(BSModalModelForm):
     class Meta:
         model = Group
         fields = [
-            'group_competition_id',
+            # 'group_competition_id',
             'group_name',
             'group_seq',
                 ]
@@ -32,8 +32,8 @@ class RunnerEditForm(BSModalModelForm):
     class Meta:
         model = Runner
         fields = [
-            'runner_competition_id',
-            'runner_group_id',
+            # 'runner_competition_id',
+            # 'runner_group_id',
             'runner_sn',
             'runner_name',
             'runner_club',

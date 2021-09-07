@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import(
-    result_list,
+    # result_list,
     check_update,
     WristEditView,
     WristDeleteView,
@@ -11,13 +11,15 @@ from .views import(
     RunnerEditView,
     RunnerDeleteView,
     RunnerReadView,
+    result_list_,
 )
 
 
 app_name = 'adminer'
 
 urlpatterns = [
-    path('result_list/', result_list, name='result-list'),
+    path('result_list_/', result_list_, name='result-list_'),
+    # path('result_list/', result_list, name='result-list'),
     path('check_update/', check_update, name='check-update'),
 
     path('update_wrist/<int:pk>', WristEditView.as_view(), name='update-wrist'),
