@@ -18,21 +18,19 @@ class Competition(models.Model):
 class Group(models.Model):
     group_name = models.CharField(max_length=20)
     group_seq = models.CharField(max_length=200)
-    #group_competition_id = models.PositiveSmallIntegerField()
     competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
 
 
 class Runner(models.Model):
     competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
     runner_sn = models.PositiveIntegerField()
-    #runner_competition_id = models.PositiveSmallIntegerField()
-    #runner_group_id = models.PositiveIntegerField()
     runner_name = models.CharField(max_length=50)
     runner_club = models.CharField(max_length=30)
     runner_coach = models.CharField(max_length=50)
     runner_skill = models.CharField(max_length=20)
     runner_state = models.CharField(max_length=30)
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+
 
 
 class Wrist(models.Model):

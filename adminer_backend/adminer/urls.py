@@ -11,14 +11,14 @@ from .views import(
     RunnerEditView,
     RunnerDeleteView,
     RunnerReadView,
-    result_list_,
+    resultlist,
 )
 
 
 app_name = 'adminer'
 
 urlpatterns = [
-    path('result_list_/', result_list_, name='result-list_'),
+    path('resultlist/', resultlist, name='result-list'),
     # path('result_list/', result_list, name='result-list'),
     path('check_update/', check_update, name='check-update'),
 

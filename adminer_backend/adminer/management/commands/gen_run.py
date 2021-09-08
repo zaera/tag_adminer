@@ -3,17 +3,21 @@ from adminer.models import Settings, Competition, Group, Runner, Wrist
 from faker import Faker
 from random import randint
 
+
 class Command(BaseCommand):
-    help = 'My awesome generating data tool'    # noqa
+    help = 'My awesome generating data tool'  # noqa
 
     def handle(self, *args, **options):
         fake = Faker()
-
+        o = 0
+        competition_ = Competition.objects.all()[0]
         groups = Group.objects.all()
         for group in groups:
             for j in range(25):
+                o = o + 1
                 Runner.objects.create(
-                    runner_sn=j,
+                    competition=competition_,
+                    runner_sn=o,
                     runner_name=fake.name(),
                     runner_club=fake.word(),
                     runner_coach=fake.first_name(),

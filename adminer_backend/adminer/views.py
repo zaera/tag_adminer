@@ -18,6 +18,31 @@ from django.core.files.storage import default_storage
 #     i.save()
 import os
 
+from django.db import connection, reset_queries
+import time
+import functools
+
+
+def query_debugger(func):
+    @functools.wraps(func)
+    def inner_func(*args, **kwargs):
+        reset_queries()
+
+        start_queries = len(connection.queries)
+
+        start = time.perf_counter()
+        result = func(*args, **kwargs)
+        end = time.perf_counter()
+
+        end_queries = len(connection.queries)
+
+        print(f"Function : {func.__name__}")
+        print(f"Number of Queries : {end_queries - start_queries}")
+        print(f"Finished in : {(end - start):.2f}s")
+        return result
+
+    return inner_func
+
 
 def handler404(request, exception, template_name="index.html"):
     response = render(template_name)
@@ -93,7 +118,8 @@ class WristDeleteView(BSModalDeleteView):
     success_url = reverse_lazy('adminer:result-list')
 
 
-def result_list_(request):
+@query_debugger
+def resultlist(request):
     # Group.objects.all().filter(competition__id=5)[0].group_name
     # https://medium.com/@dwernychukjosh/sha256-encryption-with-python-bf216db497f9
     hash_string = str(randrange(1000))
@@ -103,51 +129,30 @@ def result_list_(request):
     f.close()
 
     data = []
+    wrists = Wrist.objects.prefetch_related('competition').filter(competition__id=1)
+    runners = Runner.objects.select_related('competition', 'group').filter(competition__id=1)
+    groups = Group.objects.select_related('competition').filter(competition__id=1)
 
-    groups = Group.objects.all().select_related('competition').filter(competition__id=1)
-    wrists =Wrist.objects.select_related('competition').filter(competition__id=1)
+    for wrist in wrists:
+        runner_name = ''
+        runner_group = 0
+        group_name = ''
+        for runner in runners:
+            if runner.runner_sn == wrist.wrist_sn:
+                runner_name = runner.runner_name
+                runner_group = runner.group
+        for group in groups:
+            if group == runner_group:
+                group_name = group.group_name
 
-    for group in groups:
-        if 1 == 1:
-            # print(group.runner_set.all()[0])
-            #runners = Runner.objects.select_related('group').filter(group__id=group.id)
-            q_runners = Runner.objects.select_related('group', 'competition').filter(competition__id=1, group__id=group.id)
-            for runner in q_runners:
-               # print(Wrist.objects..select_related('competition').filter(wrist_sn=runner.runner_sn))
-               # print(runner.pk)
-                se=0
+        data.append(list((
+            wrist.wrist_sn,
+            runner_name,
+            group_name,
+            wrist.wrist_voltage,
+            wrist.wrist_seq,
 
-                for wrist in wrists:
-                   if wrist.wrist_sn == runner.runner_sn:
-                       se = wrist.wrist_seq
-
-                data.append(list((
-                    runner.pk,
-                    runner.runner_sn,
-                    runner.runner_name,
-                    runner.runner_club,
-                    runner.runner_coach,
-                    runner.runner_skill,
-                    runner.runner_state,
-                    group.pk,
-                    group.group_name,
-                    se
-                    #Wrist.objects.select_related('competition').filter(competition__id=1, wrist_sn=runner.runner_sn)[0].wrist_seq
-                )))
-
-                # runner_sn = models.PositiveIntegerField()
-                # runner_competition_id = models.PositiveSmallIntegerField()
-                # runner_group_id = models.PositiveIntegerField()
-                # runner_name = models.CharField(max_length=50)
-                # runner_club = models.CharField(max_length=30)
-                # runner_coach = models.CharField(max_length=50)
-                # runner_skill = models.CharField(max_length=20)
-                # runner_state = models.CharField(max_length=30)
-                # group = models.ForeignKey(Group, on_delete=models.CASCADE)
-
-    # Runner.objects.prefetch_related()
-    # print(Runner.objects.all().select_related('group').count())
-    # print(1)
+        )))
 
     count = len(data)
     context = {
